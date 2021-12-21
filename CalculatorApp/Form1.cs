@@ -34,11 +34,32 @@ namespace CalculatorApp
         private Rectangle equalButtonOriginalRectangle;
         private Rectangle displayLabelOriginalRectangle;
         private Rectangle historyLabelOriginalRectangle;
+        private Rectangle AbsorbOriginalRectangle;
         private Size originalFormSize;
         
         float displayNum, historyNum;
         bool isNewNum, waitEqual = true;
         string lastOrder = "";
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    equalButton.PerformClick();
+                    return true;
+                case Keys.Up:
+                    return true;
+                case Keys.Down:
+                    return true;
+                case Keys.Right:
+                    return true;
+                case Keys.Left:
+                    return true;
+                default:
+                    return false;
+            }
+        }
 
         public Calculator()
         {
@@ -134,6 +155,7 @@ namespace CalculatorApp
             equalButtonOriginalRectangle = new Rectangle(equalButton.Location.X, equalButton.Location.Y, equalButton.Width, equalButton.Height);
             displayLabelOriginalRectangle = new Rectangle(displayLabel.Location.X, displayLabel.Location.Y, displayLabel.Width, displayLabel.Height);
             historyLabelOriginalRectangle = new Rectangle(historyLabel.Location.X, historyLabel.Location.Y, historyLabel.Width, historyLabel.Height);
+            AbsorbOriginalRectangle = new Rectangle(Absorb.Location.X, Absorb.Location.Y, Absorb.Width, Absorb.Height);
         }
         
         private void Calculator_Resize(object sender, EventArgs e)
@@ -160,6 +182,7 @@ namespace CalculatorApp
             resizeControl(equalButtonOriginalRectangle, equalButton);
             resizeControl(displayLabelOriginalRectangle, displayLabel);
             resizeControl(historyLabelOriginalRectangle, historyLabel);
+            resizeControl(AbsorbOriginalRectangle, Absorb);
         }
 
         private void resizeControl(Rectangle OriginalControlRect, Control control)
@@ -180,61 +203,61 @@ namespace CalculatorApp
         private void zeroButton_Click(object sender, EventArgs e)
         {
             SetNum("0");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void oneButton_Click(object sender, EventArgs e)
         {
             SetNum("1");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void twoButton_Click(object sender, EventArgs e)
         {
             SetNum("2");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void threeButton_Click(object sender, EventArgs e)
         {
             SetNum("3");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void fourButton_Click(object sender, EventArgs e)
         {
             SetNum("4");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void fiveButton_Click(object sender, EventArgs e)
         {
             SetNum("5");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void sixButton_Click(object sender, EventArgs e)
         {
             SetNum("6");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void sevenButton_Click(object sender, EventArgs e)
         {
             SetNum("7");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void eightButton_Click(object sender, EventArgs e)
         {
             SetNum("8");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void nineButton_Click(object sender, EventArgs e)
         {
             SetNum("9");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void decimalButton_Click(object sender, EventArgs e)
@@ -244,7 +267,7 @@ namespace CalculatorApp
                 displayLabel.Text += ".";
                 isNewNum = false;
             }
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void backspaceButton_Click(object sender, EventArgs e)
@@ -258,7 +281,7 @@ namespace CalculatorApp
             {
                 displayLabel.Text = "0";
             }
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -268,7 +291,7 @@ namespace CalculatorApp
             displayLabel.Text = "0";
             historyLabel.Text = "";
             lastOrder = "";
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void negativeButton_Click(object sender, EventArgs e)
@@ -281,7 +304,7 @@ namespace CalculatorApp
             {
                 displayLabel.Text = "-" + displayLabel.Text;
             }
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void sqrtButton_Click(object sender, EventArgs e)
@@ -292,30 +315,30 @@ namespace CalculatorApp
             historyLabel.Text = "√" + displayLabel.Text;
             double sqrt = Math.Sqrt(float.Parse(displayLabel.Text));
             displayLabel.Text = sqrt.ToString();
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void multiplyButton_Click(object sender, EventArgs e)
         {
             SetOrder(" * ");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void divieButton_Click(object sender, EventArgs e)
         {
             SetOrder(" / ");
-            equalButton.Select();
+            Absorb.Select();
         }
         private void plusButton_Click(object sender, EventArgs e)
         {
             SetOrder(" + ");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void minusButton_Click(object sender, EventArgs e)
         {
             SetOrder(" - ");
-            equalButton.Select();
+            Absorb.Select();
         }
 
         private void Calculator_KeyDown(object sender, KeyEventArgs e)

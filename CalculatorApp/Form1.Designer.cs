@@ -50,6 +50,7 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.displayLabel = new System.Windows.Forms.Label();
             this.historyLabel = new System.Windows.Forms.Label();
+            this.Absorb = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // zeroButton
@@ -367,12 +368,22 @@
             this.historyLabel.TabIndex = 21;
             this.historyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // Absorb
+            // 
+            this.Absorb.Location = new System.Drawing.Point(737, 19);
+            this.Absorb.Name = "Absorb";
+            this.Absorb.Size = new System.Drawing.Size(35, 159);
+            this.Absorb.TabIndex = 22;
+            this.Absorb.Text = "Absorb";
+            this.Absorb.UseVisualStyleBackColor = true;
+            // 
             // Calculator
             // 
             this.AcceptButton = this.equalButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 795);
+            this.Controls.Add(this.Absorb);
             this.Controls.Add(this.historyLabel);
             this.Controls.Add(this.displayLabel);
             this.Controls.Add(this.multiplyButton);
@@ -431,6 +442,7 @@
         private System.Windows.Forms.Button equalButton;
         private System.Windows.Forms.Label displayLabel;
         private System.Windows.Forms.Label historyLabel;
+        private System.Windows.Forms.Button Absorb;
     }
 }
 
